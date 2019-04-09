@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<config>
+    <modules>
+        <Xtwocn_Debug>
+            <version>0.0.1</version>
+        </Xtwocn_Debug>
+    </modules>
+    <global>
+        <models>
+            <xtwocndebug>
+                <class>Xtwocn_Debug_Model</class>
+            </xtwocndebug>
+            <core>
+                <rewrite>
+                    <layout_update>Xtwocn_Debug_Model_Layout_Update</layout_update>
+                </rewrite>
+            </core>
+        </models>
+        <helpers>
+            <xtwocndebug>
+                <class>Xtwocn_Debug_Helper</class>
+            </xtwocndebug>
+        </helpers>
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <debug_block_observer>
+                        <type>singleton</type>
+                        <class>xtwocndebug/observer</class>
+                        <method>debugBlock</method>
+                    </debug_block_observer>
+                </observers>
+            </core_block_abstract_to_html_before>
+            <controller_action_postdispatch>
+                <observers>
+                    <debug_block_observer>
+                        <type>singleton</type>
+                        <class>xtwocndebug/observer</class>
+                        <method>showAction</method>
+                    </debug_block_observer>
+                    <for_show_handles>
+                        <type>singleton</type>
+                        <class>xtwocndebug/observer</class>
+                        <method>showHandles</method>
+                    </for_show_handles>
+                </observers>
+            </controller_action_postdispatch>
+        </events>
+    </global>
+    <admin>
+        <routers>
+            <debugadmin>
+                <use>admin</use>
+                <args>
+                    <module>Xtwocn_Debug_Adminhtml</module>
+                    <frontName>debugadmin</frontName>
+                </args>
+            </debugadmin>
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <xtwocndebug>
+                <use>standard</use>
+                <args>
+                    <module>Xtwocn_Debug</module>
+                    <frontName>debug</frontName>
+                </args>
+            </xtwocndebug>
+        </routers>
+    </frontend>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <debug translate="title" module="xtwocndebug">
+                                            <title>Debug</title>
+                                            <sort_order>0</sort_order>
+                                        </debug>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <crontab>
+        <events>
+            <filter_jobs>
+                <observers>
+                    <debug_observer>
+                        <class>xtwocndebug/observer</class>
+                        <method>filterJobs</method>
+                    </debug_observer>
+                </observers>
+            </filter_jobs>
+        </events>
+    </crontab>
+</config>

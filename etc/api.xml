@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <xtwocndebug_test translate="title" module="xtwocndebug">
+                <title>Test API</title>
+                <model>xtwocndebug/api_test</model>
+                <acl>xtwocndebug/test</acl>
+                <methods>
+                    <getData translate="title" module="xtwocndebug">
+                        <title>Retrieve product</title>
+                        <acl>xtwocndebug/test/getData</acl>
+                    </getData>
+                </methods>
+                <faults module="xtwocndebug">
+                    <no_parameter>
+                        <code>10001</code>
+                        <message>there should be a parameter</message>
+                    </no_parameter>
+                </faults>
+            </xtwocndebug_test>
+        </resources>
+        <resources_alias>
+            <test>xtwocndebug_test</test>
+        </resources_alias>
+        <acl>
+            <resources>
+                <xtwocndebug translate="title" module="xtwocndebug">
+                    <title>xtwocndebug</title>
+                    <sort_order>1</sort_order>
+                    <test translate="title" module="xtwocndebug">
+                        <title>test</title>
+                        <getData translate="title" module="xtwocndebug">
+                            <title>Retrieve test data</title>
+                        </getData>
+                    </test>
+                </xtwocndebug>
+            </resources>
+        </acl>
+    </api>
+</config>
