@@ -1,7 +1,55 @@
 <?php
-
-class Xtwocn_Debug_EavController extends Mage_Core_Controller_Front_Action
+require_once Mage::getModuleDir('controllers', 'Xtwocn_Debug').DS.'AbstractController.php';
+class Xtwocn_Debug_EavController extends Xtwocn_Debug_AbstractController
 {
+    public function testAction()
+    {
+	    $action=new Martin_Initialization\Action\BatchedAddAttributeGroup();
+	    $action->execute();
+	echo 'ok';exit;   
+	    $bindInterpreter=new Martin_Initialization\DataBindInterpreter\AttributeGroup();
+	    
+	   $dataLoader=new Martin_Initialization\Data\JsonLoader(); 
+	   foreach(Martin_Dir::getSubDirs($bindInterpreter->getSoureceDir()) as $dirname)
+	   {
+		   var_dump($dirname,$bindInterpreter->getItemsToBind($dataLoader,$dirname));
+	   }
+	   echo 'haha';exit;
+	    
+	    
+	    
+	    
+	    
+	$group=Mage::getModel('eav/entity_attribute_group')->load(1);
+	foreach(array_keys($group->getData()) as $val)
+	{
+		echo "\"$val\" :\"\", <br>";
+	}
+	exit;
+	    
+	    
+	    
+	$warehouse=Mage::getModel('warehouse/warehouse')->load(1);
+	$attrs=$warehouse->getResource()->loadAllAttributes()->getSortedAttributes();
+	var_dump(count($attrs));
+	foreach($attrs as $key=>$attr)
+	{
+		var_dump($key);
+	}
+	exit;
+        //85,86,133
+//        foreach(array(85,86,133) as $id)
+//        {
+//            echo '<hr>';
+//            $attribute=Mage::getModel('eav/entity_attribute')->load($id);
+//            echo $this->_formatAsArrayString($attribute->getData());
+//        }
+//
+//        exit;
+
+
+	    
+    }
     public function indexAction()
     {
         try{

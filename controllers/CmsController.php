@@ -1,6 +1,6 @@
 <?php
-
-class Xtwocn_Debug_CmsController extends Mage_Core_Controller_Front_Action{
+require_once Mage::getModuleDir('controllers', 'Xtwocn_Debug').DS.'AbstractController.php';
+class Xtwocn_Debug_CmsController extends Xtwocn_Debug_AbstractController{
     public function updateBlocksByFileSourcesAction()
     {
         try{
@@ -24,7 +24,32 @@ class Xtwocn_Debug_CmsController extends Mage_Core_Controller_Front_Action{
     }
     public function testAction()
     {
-        $this->getLayout()->getUpdate()->getHandles();
+        
+        $product = Mage::getModel('catalog/product')->load(907) ;  
+        foreach($product->getProductOptionsCollection() as $option)
+        {
+            var_dump($option->getData());
+        }
+        var_dump(get_class_methods($product)) ;
+        
+//        $block=$this->getLayout()->createBlock('martinwms/capabilityCalender')
+//                ->setTemplate('wmstheme2/components/capabilityCalender.phtml');
+//        var_dump($block->getCalender(false,10));
+        exit;
+        
+        
+        
+//       // var_dump(Zend_Date(time(),'Y-M-d')->toString());exit;
+//        $this->loadLayout();
+//        $warehouse=Mage::getModel('warehouse/warehouse')->load(1);
+//        $dateFrom=new Zend_Date(time());
+//        $dateTo=clone $dateFrom;
+//        $dateTo->addDay(5);
+//        $spaceItems=\Martin_Wms\Client\HandlerBookedSpaceItem::getSpaceItemsNotExpired($warehouse);
+//        $data= \Martin_Wms\Client\CapabilitysCalculator::AvailableRequiredCapabilityCalendar( $warehouse,  $dateFrom,  $dateTo, $spaceItems);
+//        var_dump($data);
+//        
+//        $this->renderLayout();
     }
 }
 

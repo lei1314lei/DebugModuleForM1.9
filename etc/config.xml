@@ -29,6 +29,15 @@ and open the template in the editor.
             </xtwocndebug>
         </helpers>
         <events>
+	     <router_match_after_dispath_action>
+                <observers>
+                    <action_dipatch_observer>
+                        <type>singleton</type>
+                        <class>xtwocndebug/observer</class>
+                        <method>logRouterMatchingInfoes</method>
+                    </action_dipatch_observer>
+                </observers>
+	     </router_match_after_dispath_action>
             <core_block_abstract_to_html_before>
                 <observers>
                     <debug_block_observer>
@@ -66,6 +75,13 @@ and open the template in the editor.
         </routers>
     </admin>
     <frontend>
+        <layout>
+            <updates>
+                <debug>
+                    <file>debug.xml</file>
+                </debug>
+            </updates>
+        </layout>
         <routers>
             <xtwocndebug>
                 <use>standard</use>
@@ -77,6 +93,13 @@ and open the template in the editor.
         </routers>
     </frontend>
     <adminhtml>
+        <layout>
+            <updates>
+                <debug>
+                    <file>debug.xml</file>
+                </debug>
+            </updates>
+        </layout>
         <acl>
             <resources>
                 <admin>

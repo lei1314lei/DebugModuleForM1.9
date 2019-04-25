@@ -2,31 +2,6 @@
 
 class Xtwocn_Debug_IndexController extends Mage_Core_Controller_Front_Action
 {
-    /**
-     * 
-     * @param array|Varien_Object $arr
-     * @param string $newlineChrctr
-     * @return string  
-     */
-    protected function _formatAsArrayString($arr,$newlineChrctr="<br>")
-    {
-        $str=$newlineChrctr."array(";
-        if($arr instanceof Varien_Object)
-        {
-            $arr=$arr->getData();
-        }
-        if(is_array($arr))
-        {
-            foreach($arr as $key=>$val)
-            {
-
-               $str.=$newlineChrctr."'{$key}'=>'{$val}' ,"   ;
-            }
-            $str.=$newlineChrctr." );";
-            return $str;
-        }
-        return null;
-    }
     public function deletePageAction()
     {
                $identifiers=array('wms-about-us','wms-resources','wms-solutions');
