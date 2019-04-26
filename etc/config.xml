@@ -29,6 +29,15 @@ and open the template in the editor.
             </xtwocndebug>
         </helpers>
         <events>
+		<after_throughing_out_layout_files>
+			<observers>
+			    <action_layout_observer>
+				<type>singleton</type>
+				<class>xtwocndebug/observer</class>
+				<method>logLayoutFileMergingInfoes</method>
+			    </action_layout_observer>
+			</observers>
+		</after_throughing_out_layout_files>
 	     <router_match_after_dispath_action>
                 <observers>
                     <action_dipatch_observer>

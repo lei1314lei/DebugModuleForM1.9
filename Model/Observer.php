@@ -1,6 +1,16 @@
 <?php
 
 class Xtwocn_Debug_Model_Observer{
+	
+    public function logLayoutFileMergingInfoes(Varien_Event_Observer $observer)
+    {
+	    $helper=Mage::helper('xtwocndebug');
+	    if($helper->debugTriggered())
+	    {
+		$infoes=$observer->getEvent()->getData('debugInfoes');
+		Mage::log($infoes,null,Xtwocn_Debug_Helper_Data::LOG_LAYOUT_MERGING);
+	    }
+    }
     public function logRouterMatchingInfoes(Varien_Event_Observer $observer)
     {
 	    $helper=Mage::helper('xtwocndebug');

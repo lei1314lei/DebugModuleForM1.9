@@ -1,6 +1,12 @@
 <?php
 require_once Mage::getModuleDir('controllers', 'Xtwocn_Debug').DS.'AbstractController.php';
 class Xtwocn_Debug_CmsController extends Xtwocn_Debug_AbstractController{
+	
+    public function popupAction()
+    {
+	    $this->loadLayout();
+	    $this->renderLayout();
+    }
     public function updateBlocksByFileSourcesAction()
     {
         try{

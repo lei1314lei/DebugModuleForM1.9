@@ -3,6 +3,7 @@
 class Xtwocn_Debug_Model_Layout_Update extends Mage_Core_Model_Layout_Update{
 public function getFileLayoutUpdatesXml($area, $package, $theme, $storeId = null)
     {
+	$debugInfoes=array();
         if (null === $storeId) {
             $storeId = Mage::app()->getStore()->getId();
         }
@@ -31,21 +32,32 @@ public function getFileLayoutUpdatesXml($area, $package, $theme, $storeId = null
         // custom local layout updates file - load always last
         $updateFiles[] = 'local.xml';
         $layoutStr = '';
+	$timmer=0;
         foreach ($updateFiles as $file) {
+	    $debugKey=$timmer++."_{$file}";
+	    $debugInfoes[$debugKey]['layout File Name']=$file;
+	    
             $filename = $design->getLayoutFilename($file, array(
                 '_area'    => $area,
                 '_package' => $package,
                 '_theme'   => $theme
             ));
+	     $debugInfoes[$debugKey]['layout File full path']=$filename;
+	    $debugInfoes[$debugKey]['is layout File readable']="false";
             if (!is_readable($filename)) {
                 continue;
             }
+	    $debugInfoes[$debugKey]['is layoutFileName readable']="ture";
+	    
             $fileStr = file_get_contents($filename);
             $fileStr = str_replace($this->_subst['from'], $this->_subst['to'], $fileStr);
             $fileXml = simplexml_load_string($fileStr, $elementClass);
+	    
+	    $debugInfoes[$debugKey]['successfully loading Data From File']="false";
             if (!$fileXml instanceof SimpleXMLElement) {
                 continue;
             }
+	    $debugInfoes[$debugKey]['successfully loading Data From File']="true";
             
             foreach($fileXml->children() as $child){
                 foreach($child->children() as $grandChild){
@@ -55,6 +67,7 @@ public function getFileLayoutUpdatesXml($area, $package, $theme, $storeId = null
             
             $layoutStr .= $fileXml->innerXml();
         }
+	Mage::dispatchEvent("after_throughing_out_layout_files",array('debugInfoes'=>$debugInfoes));
         $layoutXml = simplexml_load_string('<layouts>'.$layoutStr.'</layouts>', $elementClass);
         return $layoutXml;
     }

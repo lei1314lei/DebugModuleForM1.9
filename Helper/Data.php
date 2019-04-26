@@ -2,10 +2,11 @@
 
 class Xtwocn_Debug_Helper_Data extends Mage_Core_Helper_Abstract{
 	CONST DEBUG_TRIGGER='debug';
-	CONST LOG_ROUTER_MATCHING='XTWOCN_DEBUG_RouterMatchingProcess.log';
-	CONST LOG_LAYOUT_XML="XTWOCN_DEBUG_LayoutXml.log";
-	CONST LOG_REQUEST="XTWOCN_DEBUG_Request.log";
-	CONST LOG_HANDLES ="XTWOCN_DEBUG_Handles.log";
+	CONST LOG_LAYOUT_MERGING='XTW_DBG_LayoutFileMergingProcess.log';
+	CONST LOG_ROUTER_MATCHING='XTW_DBG_RouterMatchingProcess.log';
+	CONST LOG_LAYOUT_XML="XTW_DBG_LayoutXml.log";
+	CONST LOG_REQUEST="XTW_DBG_Request.log";
+	CONST LOG_HANDLES ="XTW_DBG_Handles.log";
 	public function debugTriggered()
 	{
 		$params=$this->_getRequest()->getParams();
@@ -21,8 +22,6 @@ class Xtwocn_Debug_Helper_Data extends Mage_Core_Helper_Abstract{
 
 
 	public function hintTemplate(){
-	    $request=$this->_getRequest();
-	    $params=$request->getParams();
 	    return $this->debugTriggered()?true:false;
 
 	}
