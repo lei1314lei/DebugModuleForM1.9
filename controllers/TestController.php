@@ -11,11 +11,17 @@
  *
  * @author martin.tian
  */
-class Xtwocn_Debug_TestController extends Mage_Core_Controller_Front_Action
+class Martin_Debug_TestController extends Mage_Core_Controller_Front_Action
 {
 	public function indexAction()
 	{
-		$setComparatorClass= \Martin_Basics\Config::SET_COMPARATOR;
-		var_dump(new $setComparatorClass());exit;
+        $processId=6;
+        $process = Mage::getModel('index/process')->load($processId);
+        if ($process->getId() && $process->getIndexer()->isVisible()) {
+               $process->reindexEverything();
+            echo $process->getIndexer()->getName().' index was rebuilt.';
+        }else{
+            echo 'not to be done';
+        }
 	}
 }

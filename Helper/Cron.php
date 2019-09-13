@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_Helper_Cron extends Mage_Core_Helper_Abstract{
+class Martin_Debug_Helper_Cron extends Mage_Core_Helper_Abstract{
     public function getWhiteList()
     {
         $str=Mage::getStoreConfig('debug/cron/whitelist');

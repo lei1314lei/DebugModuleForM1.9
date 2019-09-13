@@ -11,7 +11,7 @@
  *
  * @author martin.tian
  */
-class Xtwocn_Debug_WmsController extends Mage_Core_Controller_Front_Action{
+class Martin_Debug_WmsController extends Mage_Core_Controller_Front_Action{
     protected function _getFormat($date)
     {
         if (is_string($date) && preg_match('#^\d{4,4}-\d{2,2}-\d{2,2} \d{2,2}:\d{2,2}:\d{2,2}$#', $date)) {

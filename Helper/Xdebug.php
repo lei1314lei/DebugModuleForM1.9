@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_Helper_Xdebug extends Mage_Core_Helper_Abstract{
+class Martin_Debug_Helper_Xdebug extends Mage_Core_Helper_Abstract{
     protected function _format(Array &$data)
     {
         foreach($data as $key=>$val)

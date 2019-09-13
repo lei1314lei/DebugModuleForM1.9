@@ -11,7 +11,7 @@
  *
  * @author martin.tian
  */
-class Xtwocn_Debug_AbstractController extends Mage_Core_Controller_Front_Action{
+class Martin_Debug_AbstractController extends Mage_Core_Controller_Front_Action{
     /**
      * 
      * @param array|Varien_Object $arr

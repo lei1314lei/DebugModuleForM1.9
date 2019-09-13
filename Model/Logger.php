@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_Model_Logger extends Varien_Object{
+class Martin_Debug_Model_Logger extends Varien_Object{
     protected $_hasObserveTarge=false;
     protected $_targets=array();
     protected $_onlyLogObsTarget;
@@ -36,7 +36,7 @@ class Xtwocn_Debug_Model_Logger extends Varien_Object{
         $func='loadChange';
         foreach($this->_targets as $methodPaths)
         {
-            $debugger=new Xtwocn_Debug_Backtrace();
+            $debugger=new Martin_Debug_Backtrace();
              if($debugger->isCalledBy($methodPaths))
              {
                  return array('method'=>json_encode($methodPaths));

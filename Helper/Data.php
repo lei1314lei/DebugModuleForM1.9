@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_Helper_Data extends Mage_Core_Helper_Abstract{
+class Martin_Debug_Helper_Data extends Mage_Core_Helper_Abstract{
 	CONST DEBUG_TRIGGER='debug';
 	CONST LOG_LAYOUT_MERGING='XTW_DBG_LayoutFileMergingProcess.log';
 	CONST LOG_ROUTER_MATCHING='XTW_DBG_RouterMatchingProcess.log';

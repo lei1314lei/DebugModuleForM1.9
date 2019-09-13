@@ -1,35 +1,35 @@
 <?php
 
-class Xtwocn_Debug_Model_Observer{
+class Martin_Debug_Model_Observer{
 	
     public function logLayoutFileMergingInfoes(Varien_Event_Observer $observer)
     {
-	    $helper=Mage::helper('xtwocndebug');
+	    $helper=Mage::helper('martindebug');
 	    if($helper->debugTriggered())
 	    {
 		$infoes=$observer->getEvent()->getData('debugInfoes');
-		Mage::log($infoes,null,Xtwocn_Debug_Helper_Data::LOG_LAYOUT_MERGING);
+		Mage::log($infoes,null,Martin_Debug_Helper_Data::LOG_LAYOUT_MERGING);
 	    }
     }
     public function logRouterMatchingInfoes(Varien_Event_Observer $observer)
     {
-	    $helper=Mage::helper('xtwocndebug');
+	    $helper=Mage::helper('martindebug');
 	    if($helper->debugTriggered())
 	    {
 		$infoes=$observer->getEvent()->getData('routerMatchingInfoes');
-		Mage::log($infoes,null,Xtwocn_Debug_Helper_Data::LOG_ROUTER_MATCHING);
+		Mage::log($infoes,null,Martin_Debug_Helper_Data::LOG_ROUTER_MATCHING);
 	    }
     }
     public function debugBlock(Varien_Event_Observer $observer){
         $block=$observer->getEvent()->getBlock();
-        $helper=Mage::helper('xtwocndebug');
+        $helper=Mage::helper('martindebug');
         $app=Mage::app();
         //if($helper->showLayoutXml()){
 	if($helper->debugTriggered()){
             if($block->getNameInLayout()=='root'){
                 $layoutString=$app->getLayout()->getUpdate()->asString();
                 //echo ($helper->xmlToHtml($layoutString)) ; exit;
-		Mage::log($layoutString,null,Xtwocn_Debug_Helper_Data::LOG_LAYOUT_XML);
+		Mage::log($layoutString,null,Martin_Debug_Helper_Data::LOG_LAYOUT_XML);
             }
         }
         if($helper->hintTemplate()){
@@ -41,12 +41,12 @@ class Xtwocn_Debug_Model_Observer{
     }
     public function filterJobs(Varien_Event_Observer $observer)
     {
-        $helper=Mage::helper('xtwocndebug/cron');
+        $helper=Mage::helper('martindebug/cron');
         $helper->filterJobs();
     }
     public function showAction(Varien_Event_Observer $observer)
     {
-        $helper=Mage::helper('xtwocndebug');
+        $helper=Mage::helper('martindebug');
         if($helper->debugTriggered())
         {
             $action=$observer->getData('controller_action');
@@ -57,17 +57,17 @@ class Xtwocn_Debug_Model_Observer{
                 "action name"=>$request->getActionName(),
                 "controller name"=>$request->getControllerName(),
                         );
-	    Mage::log($infoes,null,Xtwocn_Debug_Helper_Data::LOG_REQUEST);
+	    Mage::log($infoes,null,Martin_Debug_Helper_Data::LOG_REQUEST);
         }
     }
     public function showHandles(Varien_Event_Observer $observer)
     {
-        $helper=Mage::helper('xtwocndebug');
+        $helper=Mage::helper('martindebug');
         if($helper->debugTriggered())
         {
             $action=$observer->getData('controller_action');
             $handles = $action->getLayout()->getUpdate()->getHandles();
-            Mage::log($handles,null,Xtwocn_Debug_Helper_Data::LOG_HANDLES);
+            Mage::log($handles,null,Martin_Debug_Helper_Data::LOG_HANDLES);
         }
 
     }

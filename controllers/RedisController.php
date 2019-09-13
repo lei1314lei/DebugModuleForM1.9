@@ -11,7 +11,7 @@
  *
  * @author martin.tian
  */
-class Xtwocn_Debug_RedisController extends Mage_Core_Controller_Front_Action{
+class Martin_Debug_RedisController extends Mage_Core_Controller_Front_Action{
     protected $_redisClient;
 
 

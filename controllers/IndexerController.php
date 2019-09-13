@@ -1,9 +1,82 @@
 <?php
 
-class Xtwocn_Debug_IndexerController extends Mage_Core_Controller_Front_Action{ 
+class Martin_Debug_IndexerController extends Mage_Core_Controller_Front_Action{
+
+    public function catalogsearchAction()
+    {
+        //Wyomind_Elasticsearch_Model_Indexer_Fulltext
+        Mage::getModel('elasticsearch/Indexer_Fulltext')->reindexAll();
+    }
+
+
+    public function priceAction()
+    {
+        $helper = Mage::helper('enterprise_cataloginventory/index');
+       $productIds=array(2636,2637,2638);
+       // $productIds=array(2635);
+        if ($helper->isLivePriceAndStockReindexEnabled()) {
+            foreach($productIds as $productId)
+            {
+                //$productId = 2635;
+                $client = Mage::getModel('enterprise_mview/client');
+                $metadataTableName=$helper->getIndexerConfigValue('catalog_product_price', 'index_table');
+                $client->init($metadataTableName);
+
+                $arguments = array(
+                    'value' => $productId,
+                );
+                $client->execute('enterprise_catalog/index_action_product_price_refresh_row', $arguments);
+            }
+
+        }
+ echo 'haha';
+        exit;
+
+
+
+
+
+        $metadataTableName=Mage::helper('enterprise_index')->getIndexerConfigValue('catalog_product_price', 'index_table');
+        $client = Mage::getModel('enterprise_mview/client');
+        var_dump($metadataTableName);
+        $client->init($metadataTableName);
+        $client->execute('enterprise_catalog/index_action_product_price_refresh');
+        echo 'here is ok';
+        exit;
+        //enterprise_index
+        //Mage::helper('enterprise_index');
+
+
+        //catalog_product_price
+        $indexCode='catalog_product_price';
+        $factory = new Mage_Core_Model_Factory();
+        $indexer=$factory->getSingleton($factory->getIndexClassAlias());
+
+        $processes=$indexer->getProcessesCollectionByCodes(array($indexCode));
+        foreach($processes as $process)
+        {
+            $process->reindexEverything();
+            $eventName=$process->getIndexerCode() . '_shell_reindex_after';
+            var_dump($eventName) ;
+            //catalog_product_price_shell_reindex_after
+            //cataloginventory_stock_shell_reindex_after
+            if('catalog_product_price_shell_reindex_after'==$eventName)
+            {
+
+            }else{
+
+                Mage::dispatchEvent($eventName);
+            }
+
+        }
+
+        echo 'ok';
+    }
+
+
     public function testAction()
     {
-        $helper=Mage::helper('xtwocndebug/data_tree_backtrace');
+        $helper=Mage::helper('martindebug/data_tree_backtrace');
         var_dump($helper->getTree());exit;
         //Mage_Catalog_Model_Resource_Category_Tree
         $catTree=Mage::getResourceModel('catalog/category_tree');
@@ -67,7 +140,7 @@ class Xtwocn_Debug_IndexerController extends Mage_Core_Controller_Front_Action{
          
          
         
-        //Xtwocn_Debug_Model_Resource_Product_Indexer_Price
+        //Martin_Debug_Model_Resource_Product_Indexer_Price
         $indexerResource=Mage::getModel('catalog/product_indexer_price')->getResource();
         $indexerResource->reindexAll();exit;
         var_dump($indexerResource);exit;
@@ -138,13 +211,13 @@ class Xtwocn_Debug_IndexerController extends Mage_Core_Controller_Front_Action{
                     echo "<hr>$code : <span style='color:red'> ".get_class($model)."</span><br><br>";
                     $reflection=new ReflectionClass (get_class($model));
                     echo "<br>parentClass:",$reflection->getParentClass()->getName() ,"<br>"; 
-                    $this->_showMainTable($model);
+                  //  $this->_showMainTable($model);
                 } else {
                     Mage::throwException(Mage::helper('index')->__('Indexer model should extend Mage_Index_Model_Indexer_Abstract.'));
                 }
             } 
         } catch (Exception $ex) {
-            var_dump($ex);
+            var_dump($ex->getMessage());
         }
     }
     protected function _showUrlIndexerTable(Mage_Catalog_Model_Indexer_Url $model)

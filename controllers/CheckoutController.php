@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_CheckoutController extends Mage_Core_Controller_Front_Action{
+class Martin_Debug_CheckoutController extends Mage_Core_Controller_Front_Action{
     protected $_httpClient;
     
     public function currencyAction()
@@ -36,7 +36,7 @@ class Xtwocn_Debug_CheckoutController extends Mage_Core_Controller_Front_Action{
     }
     public function indexAction()
     {
-        //Xtwocn_Wirecard_Model_AlipayxborderPayinfo
+        //Martin_Wirecard_Model_AlipayxborderPayinfo
         $model= Mage::getModel('wirecard/alipayxborderPayinfo');
         var_dump($model->getNode('merchant-account-id'),get_class_methods($model));exit;
         

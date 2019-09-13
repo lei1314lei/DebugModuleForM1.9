@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_IndexController extends Mage_Core_Controller_Front_Action
+class Martin_Debug_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function deletePageAction()
     {
@@ -19,15 +19,16 @@ class Xtwocn_Debug_IndexController extends Mage_Core_Controller_Front_Action
 //               $attr=Mage::getModel('eav/entity_attribute')->loadByCode(9,'city_id');
 //               var_dump($attr->getData());exit;
 //               
-               $model=Mage::getModel('eav/entity_attribute');
-               $attribute=$model->loadByCode('warehouse','total_space');
-               
-               var_dump($attribute->getData()) ; 
-               
-            $entityTypeCode='warehouse';
-            $action=new \Martin_EavAttribute\Action\ImportAttrsForEntityFromCfg($entityTypeCode);
-            $action->execute();
-               
+//               $model=Mage::getModel('eav/entity_attribute');
+//               $attribute=$model->loadByCode('warehouse','total_space');
+//
+//               var_dump($attribute->getData()) ;
+//
+//            $entityTypeCode='warehouse';
+//            $action=new \Martin_EavAttribute\Action\ImportAttrsForEntityFromCfg($entityTypeCode);
+//            $action->execute();
+
+            echo __FILE__;
                
                exit;
                

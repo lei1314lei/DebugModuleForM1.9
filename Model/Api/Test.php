@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_Model_Api_Test extends Mage_Api_Model_Resource_Abstract
+class Martin_Debug_Model_Api_Test extends Mage_Api_Model_Resource_Abstract
 {
     public function getData($parameter)
     {

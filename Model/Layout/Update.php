@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_Model_Layout_Update extends Mage_Core_Model_Layout_Update{
+class Martin_Debug_Model_Layout_Update extends Mage_Core_Model_Layout_Update{
 public function getFileLayoutUpdatesXml($area, $package, $theme, $storeId = null)
     {
 	$debugInfoes=array();

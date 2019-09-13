@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class Xtwocn_Debug_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
+class Martin_Debug_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
 {
     public function indexAction()
     {

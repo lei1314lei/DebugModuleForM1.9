@@ -1,6 +1,6 @@
 <?php
-require_once Mage::getModuleDir('controllers', 'Xtwocn_Debug').DS.'AbstractController.php';
-class Xtwocn_Debug_EavController extends Xtwocn_Debug_AbstractController
+require_once Mage::getModuleDir('controllers', 'Martin_Debug').DS.'AbstractController.php';
+class Martin_Debug_EavController extends Martin_Debug_AbstractController
 {
     public function testAction()
     {

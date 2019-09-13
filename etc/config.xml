@@ -8,32 +8,37 @@ and open the template in the editor.
 
 <config>
     <modules>
-        <Xtwocn_Debug>
+        <Martin_Debug>
             <version>0.0.1</version>
-        </Xtwocn_Debug>
+        </Martin_Debug>
     </modules>
     <global>
+        <blocks>
+            <martindebug>
+                <class>Martin_Debug_Block</class>
+            </martindebug>
+        </blocks>
         <models>
-            <xtwocndebug>
-                <class>Xtwocn_Debug_Model</class>
-            </xtwocndebug>
+            <martindebug>
+                <class>Martin_Debug_Model</class>
+            </martindebug>
             <core>
                 <rewrite>
-                    <layout_update>Xtwocn_Debug_Model_Layout_Update</layout_update>
+                    <layout_update>Martin_Debug_Model_Layout_Update</layout_update>
                 </rewrite>
             </core>
         </models>
         <helpers>
-            <xtwocndebug>
-                <class>Xtwocn_Debug_Helper</class>
-            </xtwocndebug>
+            <martindebug>
+                <class>Martin_Debug_Helper</class>
+            </martindebug>
         </helpers>
         <events>
 		<after_throughing_out_layout_files>
 			<observers>
 			    <action_layout_observer>
 				<type>singleton</type>
-				<class>xtwocndebug/observer</class>
+				<class>martindebug/observer</class>
 				<method>logLayoutFileMergingInfoes</method>
 			    </action_layout_observer>
 			</observers>
@@ -42,7 +47,7 @@ and open the template in the editor.
                 <observers>
                     <action_dipatch_observer>
                         <type>singleton</type>
-                        <class>xtwocndebug/observer</class>
+                        <class>martindebug/observer</class>
                         <method>logRouterMatchingInfoes</method>
                     </action_dipatch_observer>
                 </observers>
@@ -51,7 +56,7 @@ and open the template in the editor.
                 <observers>
                     <debug_block_observer>
                         <type>singleton</type>
-                        <class>xtwocndebug/observer</class>
+                        <class>martindebug/observer</class>
                         <method>debugBlock</method>
                     </debug_block_observer>
                 </observers>
@@ -60,12 +65,12 @@ and open the template in the editor.
                 <observers>
                     <debug_block_observer>
                         <type>singleton</type>
-                        <class>xtwocndebug/observer</class>
+                        <class>martindebug/observer</class>
                         <method>showAction</method>
                     </debug_block_observer>
                     <for_show_handles>
                         <type>singleton</type>
-                        <class>xtwocndebug/observer</class>
+                        <class>martindebug/observer</class>
                         <method>showHandles</method>
                     </for_show_handles>
                 </observers>
@@ -77,7 +82,7 @@ and open the template in the editor.
             <debugadmin>
                 <use>admin</use>
                 <args>
-                    <module>Xtwocn_Debug_Adminhtml</module>
+                    <module>Martin_Debug_Adminhtml</module>
                     <frontName>debugadmin</frontName>
                 </args>
             </debugadmin>
@@ -92,14 +97,21 @@ and open the template in the editor.
             </updates>
         </layout>
         <routers>
-            <xtwocndebug>
+            <martindebug>
                 <use>standard</use>
                 <args>
-                    <module>Xtwocn_Debug</module>
-                    <frontName>debug</frontName>
+                    <module>Martin_Debug</module>
+                    <frontName>martindebug</frontName>
                 </args>
-            </xtwocndebug>
+            </martindebug>
         </routers>
+        <layout>
+            <updates>
+                <martindebug>
+                    <file>martindebug.xml</file>
+                </martindebug>
+            </updates>
+        </layout>
     </frontend>
     <adminhtml>
         <layout>
@@ -117,7 +129,7 @@ and open the template in the editor.
                             <children>
                                 <config>
                                     <children>
-                                        <debug translate="title" module="xtwocndebug">
+                                        <debug translate="title" module="martindebug">
                                             <title>Debug</title>
                                             <sort_order>0</sort_order>
                                         </debug>
@@ -135,7 +147,7 @@ and open the template in the editor.
             <filter_jobs>
                 <observers>
                     <debug_observer>
-                        <class>xtwocndebug/observer</class>
+                        <class>martindebug/observer</class>
                         <method>filterJobs</method>
                     </debug_observer>
                 </observers>

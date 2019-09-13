@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_AddressController extends Mage_Core_Controller_Front_Action{
+class Martin_Debug_AddressController extends Mage_Core_Controller_Front_Action{
     public function indexAction()
     {
         $id=391091886;

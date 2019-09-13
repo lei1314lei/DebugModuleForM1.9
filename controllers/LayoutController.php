@@ -1,6 +1,6 @@
 <?php
 
-class Xtwocn_Debug_LayoutController extends Mage_Core_Controller_Front_Action{
+class Martin_Debug_LayoutController extends Mage_Core_Controller_Front_Action{
     protected function _cmsBlock($id)
     {
         $layout=$this->getLayout();

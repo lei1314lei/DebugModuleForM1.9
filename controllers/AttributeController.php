@@ -1,5 +1,5 @@
 <?php
-class Xtwocn_Debug_AttributeController extends Mage_Core_Controller_Front_Action{
+class Martin_Debug_AttributeController extends Mage_Core_Controller_Front_Action{
     
     public function indexAction(){
         try{

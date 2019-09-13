@@ -11,7 +11,7 @@
  *
  * @author martin.tian
  */
-class Xtwocn_Debug_Adminhtml_GalleryController extends Mage_Adminhtml_Controller_Action{
+class Martin_Debug_Adminhtml_GalleryController extends Mage_Adminhtml_Controller_Action{
     public function uploadAction()
     {
         try {
