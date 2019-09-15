@@ -4,7 +4,7 @@
 class Martin_Debug_DB_AdapterController extends Mage_Core_Controller_Front_Action{
     public function indexAction()
     {
-        echo 'ok';
+          $readAdapter=Mage::getSingleton('core/resource')->c
     }
 }
 

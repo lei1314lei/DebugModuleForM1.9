@@ -27,24 +27,24 @@
 -->
 <config>
     <menu>
-        <xtwocn_debug>
-            <title>xtwocn debug</title>
+        <martindebug>
+            <title>debug</title>
             <sort_order>100</sort_order>
             <children>
-                <index translate="title" module="xtwocndebug">
+                <index translate="title" module="martindebug">
                     <title>index</title>
                     <action>debugadmin/index</action>
                     <sort_order>0</sort_order>
                 </index>
             </children>
-        </xtwocn_debug>
+        </martindebug>
     </menu>
     <acl>
         <resources>
             <admin>
                 <children>
-                    <xtwocn_debug translate="title" module="xtwocndebug">
-                        <title>xtwocn debug</title>
+                    <martindebug translate="title" module="martindebug">
+                        <title>debug</title>
                         <sort_order>70</sort_order>
                         <children>
                             <block translate="title">
@@ -52,7 +52,7 @@
                                 <sort_order>10</sort_order>
                             </block>
                         </children>
-                    </xtwocn_debug>
+                    </martindebug>
                 </children>
             </admin>
         </resources>
