@@ -153,5 +153,16 @@ and open the template in the editor.
                 </observers>
             </filter_jobs>
         </events>
+
+        <jobs>
+            <test>
+                <schedule>
+                    <cron_expr>0 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>martindebug/observer::cronjobTest</model>
+                </run>
+            </test>
+        </jobs>
     </crontab>
 </config>

@@ -1,11 +1,8 @@
 <?php
 
-class Martin_Debug_CronController extends Mage_Core_Controller_Front_Action{
+class Martin_Debug_Cron_JobsController extends Mage_Core_Controller_Front_Action{
+
     public function indexAction()
-    {
-       Mage::getModel('wirecard/observer')->cancelPaymentPendingOrder();
-    }
-    public function jobsAction()
     {
        // var_dump( Mage::getStoreConfig('payment/wrcd_alipayxborder/interval_time_to_cancel'));exit;
         $config = Mage::getConfig()->getNode('crontab/jobs');
