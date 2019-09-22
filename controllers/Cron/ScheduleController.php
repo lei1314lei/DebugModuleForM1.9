@@ -81,6 +81,8 @@ ELO;
             array("expr"=>"1,2,3","num"=>3 , "explanation"=>"num is 3; from is 0 ; to is 60; mod is 1"),
             array("expr"=>"*/3","num"=>3 ),
             array("expr"=>"1-12/3","num"=>3),
+            array("expr"=>"1-13/6","num"=>3),
+            array("expr"=>"1-13/2","num"=>6),
             array("expr"=>"12/3","num"=>3),
 
 
