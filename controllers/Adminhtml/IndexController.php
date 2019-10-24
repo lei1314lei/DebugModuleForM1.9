@@ -7,8 +7,26 @@
  */
 class Martin_Debug_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
 {
+    public function _testSaveProduct()
+    {
+        //10290
+        $product=Mage::getModel('catalog/product')->load(10290);
+        if($product->getId())
+        {
+
+            $product->setData('status',1);
+//            $product->setStatus(1);
+//            $product->setUrlKey('testasaeas');
+            $product->save();
+        }
+
+        var_dump($product->getStatus());exit;
+    }
+
     public function indexAction()
     {
+        $this->_testSaveProduct();exit;
+
         $this->loadLayout();
 //        $product=Mage::getModel('catalog/product')->load(554);
 //        Mage::register('product', $product);

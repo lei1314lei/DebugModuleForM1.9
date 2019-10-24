@@ -83,7 +83,7 @@ and open the template in the editor.
                 <use>admin</use>
                 <args>
                     <module>Martin_Debug_Adminhtml</module>
-                    <frontName>debugadmin</frontName>
+                    <frontName>martindebugadmin</frontName>
                 </args>
             </debugadmin>
         </routers>
