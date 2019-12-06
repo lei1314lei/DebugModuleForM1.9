@@ -34,24 +34,33 @@ and open the template in the editor.
             </martindebug>
         </helpers>
         <events>
-		<after_throughing_out_layout_files>
-			<observers>
-			    <action_layout_observer>
-				<type>singleton</type>
-				<class>martindebug/observer</class>
-				<method>logLayoutFileMergingInfoes</method>
-			    </action_layout_observer>
-			</observers>
-		</after_throughing_out_layout_files>
-	     <router_match_after_dispath_action>
+            <wyomind_elasticsearch_before_search>
                 <observers>
-                    <action_dipatch_observer>
+                    <search_v3_observer>
                         <type>singleton</type>
                         <class>martindebug/observer</class>
-                        <method>logRouterMatchingInfoes</method>
-                    </action_dipatch_observer>
+                        <method>changeToBeSearchV3</method>
+                    </search_v3_observer>
                 </observers>
-	     </router_match_after_dispath_action>
+            </wyomind_elasticsearch_before_search>
+            <after_throughing_out_layout_files>
+                <observers>
+                    <action_layout_observer>
+                    <type>singleton</type>
+                    <class>martindebug/observer</class>
+                    <method>logLayoutFileMergingInfoes</method>
+                    </action_layout_observer>
+                </observers>
+            </after_throughing_out_layout_files>
+             <router_match_after_dispath_action>
+                    <observers>
+                        <action_dipatch_observer>
+                            <type>singleton</type>
+                            <class>martindebug/observer</class>
+                            <method>logRouterMatchingInfoes</method>
+                        </action_dipatch_observer>
+                    </observers>
+             </router_match_after_dispath_action>
             <core_block_abstract_to_html_before>
                 <observers>
                     <debug_block_observer>
@@ -155,14 +164,30 @@ and open the template in the editor.
         </events>
 
         <jobs>
-            <test>
+            <test_first_day_of_daily>
                 <schedule>
                     <cron_expr>0 0 * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>martindebug/observer::cronjobTest</model>
                 </run>
-            </test>
+            </test_first_day_of_daily>
+            <test_first_day_of_week>
+                <schedule>
+                    <cron_expr>0 0 * * 1</cron_expr>
+                </schedule>
+                <run>
+                    <model>martindebug/observer::cronjobTest</model>
+                </run>
+            </test_first_day_of_week>
+            <test_first_day_of_month>
+                <schedule>
+                    <cron_expr>0 0 1 * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>martindebug/observer::cronjobTest</model>
+                </run>
+            </test_first_day_of_month>
         </jobs>
     </crontab>
 </config>

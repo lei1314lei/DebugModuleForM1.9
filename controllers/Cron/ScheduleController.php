@@ -5,6 +5,11 @@ class Martin_Debug_Cron_ScheduleController extends Mage_Core_Controller_Front_Ac
     {
 
     }
+    public function timeAction()
+    {
+        $date=Mage::getSingleton('core/date');
+        var_dump(get_class_methods($date));exit;
+    }
     public function generateAction()
     {
         //Mage::app()->saveCache(time(), self::CACHE_KEY_LAST_SCHEDULE_GENERATE_AT, array('crontab'), null);
