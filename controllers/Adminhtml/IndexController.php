@@ -25,6 +25,13 @@ class Martin_Debug_Adminhtml_IndexController extends Mage_Adminhtml_Controller_A
 
     public function indexAction()
     {
+
+
+        echo "admin ok";
+
+        exit;
+
+
         $this->_testSaveProduct();exit;
 
         $this->loadLayout();

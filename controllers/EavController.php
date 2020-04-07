@@ -2,6 +2,18 @@
 require_once Mage::getModuleDir('controllers', 'Martin_Debug').DS.'AbstractController.php';
 class Martin_Debug_EavController extends Martin_Debug_AbstractController
 {
+
+    public function attributeAction()
+    {
+        $object=  new Varien_Object();
+        $attributeCodes = Mage::getSingleton('eav/config')
+            ->getEntityAttributeCodes("supplier", $object);
+        var_dump($attributeCodes);exit;
+
+        $model=Mage::getModel('customer/attribute')->load(150);
+        var_dump($model->getData());exit;
+    }
+
     public function testAction()
     {
 	    $action=new Martin_Initialization\Action\BatchedAddAttributeGroup();
@@ -98,17 +110,7 @@ class Martin_Debug_EavController extends Martin_Debug_AbstractController
         
         var_dump(get_class_methods($model));
     }
-    public function attributeAction()
-    {
-        $object=  new Varien_Object();
-        $attributeCodes = Mage::getSingleton('eav/config')
-            ->getEntityAttributeCodes("supplier", $object);
-        var_dump($attributeCodes);exit;
-        
-        $model=Mage::getModel('customer/attribute')->load(150);
-        var_dump($model->getData());exit;
-    }
-    
+
     public function supplierAction()
     {
                 try{

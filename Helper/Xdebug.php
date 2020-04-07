@@ -1,6 +1,17 @@
 <?php
 
 class Martin_Debug_Helper_Xdebug extends Mage_Core_Helper_Abstract{
+
+    static public function designAsIphoneIfMyLocalDev()
+    {
+        //Mage_Core_Model_Design_Package::_checkUserAgentAgainstRegexps
+//        Mage::log($_SERVER,null,'test.log');
+        if($_SERVER['REMOTE_ADDR']=='127.0.0.1')
+        {
+            $_SERVER['HTTP_USER_AGENT']='iPhone';
+        }
+    }
+
     protected function _format(Array &$data)
     {
         foreach($data as $key=>$val)
