@@ -3,7 +3,12 @@ class Martin_Debug_AttributeController extends Mage_Core_Controller_Front_Action
 
     public function categoryAction()
     {
+        $action = new B2b_Catalog_Actions_AddBooleanAttributeForCategory('is_b2b','Is Category Of B2B','General Information');
+            $action->execute();exit;
+
         //Mage_Eav_Model_Entity_Attribute
+
+
 //        $eavEntityAttribute= Mage::getModel('eav/entity_attribute')->getCollection();
 
 //        var_dump($eavEntityAttribute->count());exit;
