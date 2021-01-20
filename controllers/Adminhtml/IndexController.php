@@ -25,31 +25,10 @@ class Martin_Debug_Adminhtml_IndexController extends Mage_Adminhtml_Controller_A
 
     public function indexAction()
     {
-
-
-        echo "admin ok";
-
+        $quoteId=7529;
+        $quote = Mage::getModel('sales/quote')->load($quoteId);
+        var_dump('b',$quoteId,$quote->getData());
         exit;
-
-
-        $this->_testSaveProduct();exit;
-
-        $this->loadLayout();
-//        $product=Mage::getModel('catalog/product')->load(554);
-//        Mage::register('product', $product);
-        $warehouse=Mage::getModel('warehouse/warehouse')->load(1);
-        Mage::register('warehouse', $warehouse);
-        
-        $groupId=78;
-        $group=Mage::getModel('eav/entity_attribute_group')->load($groupId);
-        $attributes=Mage::getModel('eav/entity_attribute')->getCollection()
-                ->setAttributeGroupFilter($groupId);
-        $this->getLayout()->getBlock("test")->setGroup($group)
-                            ->setGroupAttributes($attributes);
-        
-        
-        
-        $this->renderLayout();
     }
    
 }

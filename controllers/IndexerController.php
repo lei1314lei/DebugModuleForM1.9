@@ -2,6 +2,13 @@
 
 class Martin_Debug_IndexerController extends Mage_Core_Controller_Front_Action{
 
+    public function reindexChangedAction(){
+        $talbe = Mage::helper('enterprise_index')->getIndexerConfigValue('catalog_product_price', 'index_table');
+        $client = Mage::getModel('enterprise_mview/client');
+        $client->init($talbe);
+        $client->execute('enterprise_catalog/index_action_product_price_refresh_changelog');
+        echo 'ok';
+    }
     public function catalogsearchAction()
     {
         //Wyomind_Elasticsearch_Model_Indexer_Fulltext

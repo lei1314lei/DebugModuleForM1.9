@@ -35,6 +35,7 @@ class Martin_Debug_Email_TemplateController extends Mage_Core_Controller_Front_A
 
         $defaultTemplates=Mage::getConfig()->getNode(Mage_Core_Model_Email_Template::XML_PATH_TEMPLATE_EMAIL)->asArray();
         var_dump($defaultTemplates);exit;
+
     }
 
 

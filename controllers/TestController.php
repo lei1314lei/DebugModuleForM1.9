@@ -13,6 +13,71 @@
  */
 class Martin_Debug_TestController extends Mage_Core_Controller_Front_Action
 {
+    public function testAction()
+    {
+
+//        $daysLater=2;
+//        var_dump(Mage::getSingleton('core/date')->date("Y-m-d",strtotime("+$daysLater day")));
+//
+//        var_dump(Mage::getSingleton('core/date')->date("Y-m-d"));
+//        exit;
+//        $product = Mage::getModel('catalog/product')->load(10269);
+//        var_dump($product->getData('shipping_package_type'));
+//
+//        exit;
+        $helper = Mage::helper('toolots_shipping/willCall');
+        $items = Mage::getSingleton('checkout/cart')->getQuote()->getAllVisibleItems();
+        $collection = new Varien_Data_Collection();
+        foreach($items as $item)
+        {
+            var_dump(get_class($item));
+            $collection->addItem($item);
+        }
+
+        var_dump($helper->isEverySingleFulfilledByToolotsItemAvailableForWillCall($collection));
+        exit;
+
+        $carrierCode = Mage::getModel('shipping/carrier_freeshipping')->getCarrierCode();
+        var_dump($carrierCode);
+        exit;
+        $warehouseCode='hahaj;';
+
+         $config=Mage::app()->getConfig()->getNode("warehouses/{$warehouseCode}");
+
+        var_dump($config);
+        exit;
+
+        $config=Mage::app()->getConfig()->getNode('warehouses');
+        $config=(array)$config;
+        $onlyToolotsAcceptWillCall=true;
+
+        foreach($config as  $name =>$item)
+        {
+            $acceptWillCall = (string)$item->acceptWillCall;
+            $acceptWillCall=(bool)$acceptWillCall;
+            if($name==='Toolots')
+            {
+                $tooltsConfig=$item;
+                if(!$acceptWillCall)
+                {
+                    $onlyToolotsAcceptWillCall=false;
+                }
+            }else{
+                if($acceptWillCall)
+                {
+                    $onlyToolotsAcceptWillCall=false;
+                }
+            }
+        }
+
+        $address='';
+        if($onlyToolotsAcceptWillCall)
+        {
+             $address = (string)$tooltsConfig->address ;
+        }
+        var_dump($address);
+        exit;
+    }
     public function orderAction()
     {
         $storeId=Mage::app()->getStore()->getStoreId();
